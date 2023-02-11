@@ -1,6 +1,14 @@
 const express = require("express");
 const app = express();
 const { resolve } = require("path");
+
+const { resolve } = require("../client");
+
+
+// const { resolve } = require("./../client/public/index.html");
+
+
+
 // Replace if using a different env file or config
 const env = require("dotenv").config({ path: "./.env" });
 
@@ -17,7 +25,8 @@ app.use(express.json());
 
 
 app.get("/", (req, res) => {
-  const path = resolve(process.env.STATIC_DIR + "/index.html");
+  // const path = resolve(process.env.STATIC_DIR + "/index.html");
+  const path = resolve(process.env.STATIC_DIR + "./../client/public/index.html");
   res.sendFile(path);
 });
 
